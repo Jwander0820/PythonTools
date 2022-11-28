@@ -1,7 +1,6 @@
-import pyautogui
-from pyautogui import keyDown, keyUp, press
 import time
-from auto_open_app import FuncKey
+import pyautogui
+from func_key import FuncKey
 
 
 def auto_move_mail_to_other_desktop():
