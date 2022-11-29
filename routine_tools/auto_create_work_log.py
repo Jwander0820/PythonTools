@@ -2,6 +2,7 @@ from os.path import isfile
 from datetime import datetime
 from docx import Document
 from docx.shared import Pt
+from docx.oxml.ns import qn
 
 
 def get_current_date():
@@ -27,11 +28,14 @@ def modify_work_log(org_docs_path, new_docs_path, docs_title_time):
         # print(paragraph.text)
         for run in paragraph.runs:  # run負責去修改裡面文字
             if "工作日誌" in run.text:  # 將對應的文字取代成新的文字
-                run.text = run.text.replace('工作日誌', f'工作日誌 {docs_title_time}')
+                run.font.name = '微軟正黑體'  # 指定字型(需要庫中有包含該字型，建議選擇預設就有的字型)
+                run._element.rPr.rFonts.set(qn('w:eastAsia'), u'微軟正黑體')  # 中文字型需要額外呼叫這行
+                run.text = f'工作日誌 {docs_title_time}'  # 直接寫入的方法
+                # run.text = run.text.replace('工作日誌', f'工作日誌 {docs_title_time}')  # 取代文字方法
     document.save(new_docs_path)
 
 
-if __name__ == "__main__":
+def create_work_log():
     """自動建立每日例行的工作日誌，根據指定樣板，重新命名為今日的檔案名稱，修改內文標題時間"""
     _docs_suffix, _docs_title_time = get_current_date()  # 取得今天日期
     folder = r"C:\Users\jasper chiu\OneDrive - 百通科技股份有限公司"
@@ -44,3 +48,7 @@ if __name__ == "__main__":
         print("檔案不存在，生成今日工作日誌")
         modify_work_log(_org_docs_path, _new_docs_path, _docs_title_time)
         print(f"新增今日工作日誌: {_new_docs_path}")
+
+
+if __name__ == "__main__":
+    create_work_log()
