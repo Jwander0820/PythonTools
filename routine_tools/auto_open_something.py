@@ -17,12 +17,12 @@ def open_start_browser():
     # 指定Chrome開啟網頁
     # 開啟keep
     webbrowser.get('chrome').open('https://keep.google.com/#home', new=1)
-    time.sleep(0.5)
-    # 開啟outlook
-    webbrowser.get('chrome').open('https://outlook.office.com/mail/', new=1)
-    time.sleep(0.5)
+    time.sleep(1)
     # 開啟onedrive
     webbrowser.get('chrome').open('https://beltom-my.sharepoint.com/personal/jasper_chiu_beltom_com_tw/_layouts/15/onedrive.aspx?login_hint=Jasper%2EChiu%40beltom%2Ecom%2Etw', new=1)
+    time.sleep(1)
+    # 開啟outlook
+    webbrowser.get('chrome').open('https://outlook.office.com/mail/', new=1)
 
 
 def open_start_explorer():
