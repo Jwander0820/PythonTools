@@ -22,7 +22,7 @@ def open_start_browser():
     webbrowser.get('chrome').open('https://outlook.office.com/mail/', new=1)
     time.sleep(1)
     # 開啟onedrive
-    webbrowser.get('chrome').open('https://beltom-my.sharepoint.com/personal/jasper_chiu_beltom_com_tw/_layouts/15/onedrive.aspx?login_hint=Jasper%2EChiu%40beltom%2Ecom%2Etw', new=1)
+    webbrowser.get('chrome').open('https://beltom-my.sharepoint.com/', new=1)
 
 
 def open_start_explorer():
