@@ -10,7 +10,9 @@ def get_current_date():
     取得當前的日期，並整理成文件命名與文件標題所需的格式
     """
     current_datetime = datetime.now()
-    docs_suffix = f"{current_datetime.year}{current_datetime.month}{current_datetime.day}"
+    month = str(current_datetime.month).zfill(2)  # 不足兩位數的話前面填充0
+    day = str(current_datetime.day).zfill(2)
+    docs_suffix = f"{current_datetime.year}{month}{day}"
     docs_title_time = f"{current_datetime.month}/{current_datetime.day}"
     return docs_suffix, docs_title_time
 
