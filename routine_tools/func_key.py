@@ -166,7 +166,17 @@ class FuncKey:
         keyDown('win')
         press('tab')
         keyUp('win')
-        
-        
+
+    @staticmethod
+    def ctrl_wave():
+        """
+        ctrl + ` : 自訂快捷鍵
+        :return:
+        """
+        keyDown('ctrl')
+        press('`')
+        keyUp('ctrl')
+
+
 if __name__ == "__main__":
     FuncKey.win_3()

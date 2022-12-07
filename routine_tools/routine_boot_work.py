@@ -33,6 +33,8 @@ def main():
 
     time.sleep(10)
     FuncKey.win_3()
+    time.sleep(1)
+    FuncKey.ctrl_wave()
     print("快捷鍵開啟LINE")
     print("-------------(｡･∀･)ﾉﾞ-------------")
 
