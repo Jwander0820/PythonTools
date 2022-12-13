@@ -16,7 +16,7 @@ def main():
     print("開啟起始瀏覽器與指定頁面")
     print("-------------Σ(っ °Д °;)っ-------------")
 
-    time.sleep(60)
+    time.sleep(30)
     AutoControl.auto_move_mail_to_other_desktop()
     print("自動執行移動分頁與將指定頁面移動至另一桌面的操作")
     print("-------------ψ(｀∇´)ψ-------------")
@@ -24,12 +24,12 @@ def main():
     time.sleep(5)
     open_start_explorer()
     print("開啟指定檔案總管與指定應用程式")
-    print("-------------┌( ಠ_ಠ)┘-------------")
+    print("-------------┌ ( ಠ_ಠ)┘-------------")
 
     time.sleep(5)
     AutoControl.auto_move_app_to_other_desktop()
     print("自動執行將指定APP移動至另一桌面的操作")
-    print("-------------┌( ಠ_ಠ)┘-------------")
+    print("-------------┌ ( ಠ_ಠ)┘-------------")
 
     time.sleep(10)
     FuncKey.win_3()

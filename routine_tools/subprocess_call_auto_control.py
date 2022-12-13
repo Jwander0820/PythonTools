@@ -7,8 +7,8 @@ def call_auto_control():
     使用subprocess呼叫並執行指定py檔案
     """
     # 在cmd_input前添加指向該環境python.exe的路徑即可開啟對應的虛擬環境(main那邊就不需要#!指向環境了(可有可無))
-    cwd = r"E:\JasperWork\Github\PythonTools\routine_tools"  # 設定工作目錄(會影響import的路徑，因此設在與main.py同一層)
-    env = r"E:\JasperWork\project\GestureRecognitionControl\Scripts\python.exe"  # 指向venv_tensorflow虛擬環境
+    cwd = r"C:\JasperWork\Tools\PythonTools\routine_tools"  # 設定工作目錄(會影響import的路徑，因此設在與main.py同一層)
+    env = r"C:\JasperWork\venv\PythonTools\Scripts\python.exe"  # 指向venv_tensorflow虛擬環境
     call = rf"{cwd}\routine_boot_work.py"
     # 輸入參數 # cmd第一行沒有加python的話，預設是會當前的環境變數
     cmd_input = [env, call]

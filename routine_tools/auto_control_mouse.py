@@ -10,41 +10,29 @@ class AutoControl:
         FuncKey.win_tab()
         time.sleep(1)
 
-        if pyautogui.locateCenterOnScreen(f'{img_folder}/chrome_logo_3.png'):  # 若有檢測到chrome logo的座標，點擊該座標
-            pyautogui.click((pyautogui.locateCenterOnScreen(f'{img_folder}/chrome_logo_3.png')))
-
-        time.sleep(1)
-        if pyautogui.locateCenterOnScreen(f'{img_folder}/keep_logo_2.png'):  # 檢測圖標1，若沒有檢測到，則切換另一種檢測圖標
-            pyautogui.click((pyautogui.locateCenterOnScreen(f'{img_folder}/keep_logo_2.png')))  # 在keep網頁
-            pyautogui.dragRel(0, 200, 0.5)  # 0.5秒內向下移動200pixel
-            pyautogui.moveRel(400, 0)  # 滑鼠向右相對位移400pixel
-            pyautogui.dragRel(0, -400, 0.5)  # 0.5秒內向上移動400pixel
+        if pyautogui.locateCenterOnScreen(f'{img_folder}/chrome_logo_5.png'):  # 若有檢測到chrome logo的座標，點擊該座標
+            pyautogui.click((pyautogui.locateCenterOnScreen(f'{img_folder}/chrome_logo_5.png')))
+        elif pyautogui.locateCenterOnScreen(f'{img_folder}/chrome_logo_4.png'):
+            pyautogui.click((pyautogui.locateCenterOnScreen(f'{img_folder}/chrome_logo_4.png')))
         else:
-            pyautogui.click((pyautogui.locateCenterOnScreen(f'{img_folder}/keep_logo_3.png')))  # 不在keep網頁
-            pyautogui.dragRel(0, 200, 0.5)
-            pyautogui.moveRel(400, 0)
-            pyautogui.dragRel(0, -400, 0.5)
-
+            FuncKey.enter()  # 若都無檢測到chrome，按下enter中止win+tab的狀態
         time.sleep(1)
+
+        pyautogui.moveTo(60, 30)
+        pyautogui.click((60, 30), button="right")  # 在指定座標點擊右鍵(左上角網頁)
+        time.sleep(1)
+
+        keyboard_list = ["down", "down", "down", "down", "enter", "enter"]  # 點擊右鍵後透過鍵盤方向鍵操作移動視窗
+        AutoControl.continuous_keyboard_control(*keyboard_list)  # 將分頁移動到其他視窗
+        time.sleep(1)
+
         FuncKey.win_tab()
-
-        time.sleep(1)
-        pyautogui.moveTo((pyautogui.locateCenterOnScreen(f'{img_folder}/chrome_mail_logo.png')))  # 移動到郵件圖示的座標
-
-        # 右鍵點擊指定網頁，將其移至另一桌面
         time.sleep(0.5)
-        point = pyautogui.locateCenterOnScreen(f'{img_folder}/chrome_mail_logo.png')  # 取得郵件圖示的座標
-        if point:
-            pyautogui.click(point, button="right")  # 在指定座標點擊右鍵
-            time.sleep(0.5)
-            pyautogui.moveRel((50, 150))  # 移動滑鼠座標到"移至"的功能鍵上
-            time.sleep(0.5)
-            pyautogui.click()  # 點擊"移至"
-            time.sleep(1)
-            pyautogui.moveRel((420, 0))  # 滑鼠向右相對位移420pixel
-            time.sleep(0.5)
-            pyautogui.click(clicks=2)  # 點擊移至指定的桌面，一定秒數緩衝時間
-            time.sleep(2)
+
+        keyboard_list = ["right", "right_click", "down", "down", "right", "enter"]  # 將視窗移動到另一桌面
+        AutoControl.continuous_keyboard_control(*keyboard_list)
+        time.sleep(1)
+
         FuncKey.win_tab()  # 完成所有動作後 win+tab 回復原始狀態
 
     @staticmethod
@@ -54,23 +42,42 @@ class AutoControl:
         time.sleep(1.5)
 
         # 右鍵點擊指定網頁，將其移至另一桌面
-        point = pyautogui.locateCenterOnScreen(f'{img_folder}/donotsleep_logo.png')  # 取得APP圖示的座標
+        point = pyautogui.locateCenterOnScreen(f'{img_folder}/donotsleep_logo2.png')  # 取得APP圖示的座標
         if point:
             x, y = point  # 取得圖示座標後，向右下移動(150, 150)，因為圖標無法使用右鍵功能，所以需要移動到視窗位置執行功能
-            x = x + 150
+            x = x + 150  # win 11 可以透過圖標觸發右鍵功能，但此處仍做保留
             y = y + 150
             time.sleep(0.5)
             pyautogui.click((x, y), button="right")  # 在指定座標點擊右鍵
-            time.sleep(0.5)
-            pyautogui.moveRel((50, 150))  # 移動滑鼠座標到"移至"的功能鍵上
-            time.sleep(0.5)
-            pyautogui.click()  # 點擊"移至"
+            time.sleep(1)  # 點擊右鍵後透過鍵盤方向鍵操作移動視窗
+
+            keyboard_list = ["down", "down", "right", "down", "enter"]
+            AutoControl.continuous_keyboard_control(*keyboard_list)
             time.sleep(1)
-            pyautogui.moveRel((420, 50))  # 滑鼠向右相對位移420pixel，向下移動50pixel，移動到第三桌面
-            time.sleep(0.5)
-            pyautogui.click(clicks=2)  # 點擊移至指定的桌面
-            time.sleep(2)
         FuncKey.win_tab()  # 完成所有動作後 win+tab 回復原始狀態
+
+    @staticmethod
+    def continuous_keyboard_control(*args, interval=0.2):
+        """
+        自動連續輸入方向鍵或Enter的指令
+        :param args:複數的操作指令(只包含方向鍵與Enter)，會依序執行移動操作
+        :param interval:操作的間隔時間，預設為0.2秒
+        :return:
+        """
+        for key in args:
+            if key == "up":
+                FuncKey.up()
+            elif key == "down":
+                FuncKey.down()
+            elif key == "left":
+                FuncKey.left()
+            elif key == "right":
+                FuncKey.right()
+            elif key == "enter":
+                FuncKey.enter()
+            elif key == "right_click":
+                FuncKey.right_click()
+            time.sleep(interval)
 
 
 if __name__ == "__main__":
