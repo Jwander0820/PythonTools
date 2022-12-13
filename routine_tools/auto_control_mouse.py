@@ -10,8 +10,8 @@ class AutoControl:
         FuncKey.win_tab()
         time.sleep(1)
 
-        if pyautogui.locateCenterOnScreen(f'{img_folder}/chrome_logo_5.png'):  # 若有檢測到chrome logo的座標，點擊該座標
-            pyautogui.click((pyautogui.locateCenterOnScreen(f'{img_folder}/chrome_logo_5.png')))
+        if pyautogui.locateCenterOnScreen(f'{img_folder}/chrome_logo_3.png'):  # 若有檢測到chrome logo的座標，點擊該座標
+            pyautogui.click((pyautogui.locateCenterOnScreen(f'{img_folder}/chrome_logo_3.png')))
         elif pyautogui.locateCenterOnScreen(f'{img_folder}/chrome_logo_4.png'):
             pyautogui.click((pyautogui.locateCenterOnScreen(f'{img_folder}/chrome_logo_4.png')))
         else:
@@ -22,7 +22,7 @@ class AutoControl:
         pyautogui.click((60, 30), button="right")  # 在指定座標點擊右鍵(左上角網頁)
         time.sleep(1)
 
-        keyboard_list = ["down", "down", "down", "down", "enter", "enter"]  # 點擊右鍵後透過鍵盤方向鍵操作移動視窗
+        keyboard_list = ["down", "down", "down", "down", "enter"]  # 點擊右鍵後透過鍵盤方向鍵操作移動視窗
         AutoControl.continuous_keyboard_control(*keyboard_list)  # 將分頁移動到其他視窗
         time.sleep(1)
 
@@ -42,7 +42,7 @@ class AutoControl:
         time.sleep(1.5)
 
         # 右鍵點擊指定網頁，將其移至另一桌面
-        point = pyautogui.locateCenterOnScreen(f'{img_folder}/donotsleep_logo2.png')  # 取得APP圖示的座標
+        point = pyautogui.locateCenterOnScreen(f'{img_folder}/donotsleep_logo.png')  # 取得APP圖示的座標
         if point:
             x, y = point  # 取得圖示座標後，向右下移動(150, 150)，因為圖標無法使用右鍵功能，所以需要移動到視窗位置執行功能
             x = x + 150  # win 11 可以透過圖標觸發右鍵功能，但此處仍做保留

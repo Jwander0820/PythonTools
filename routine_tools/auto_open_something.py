@@ -9,7 +9,7 @@ def open_start_browser():
     :return:
     """
     # 指定你的chrome路徑
-    chromePath = r'C:\Program Files\Google\Chrome\Application\chrome.exe'
+    chromePath = r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe'
 
     # 註冊Chrome
     webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(chromePath))
@@ -34,13 +34,13 @@ def open_start_explorer():
     subprocess.Popen(r'explorer "C:\Users\Jasper Chiu\Downloads"')
     time.sleep(1)
     # 開啟檔案總管 - Revital
-    subprocess.Popen(r'explorer "C:\JasperWork\Project\Revital"')
+    subprocess.Popen(r'explorer "E:\JasperWork\Revital"')
     time.sleep(1)
     # 開啟應用程式 - PyCharm
-    subprocess.Popen(r'explorer "C:\Program Files\JetBrains\PyCharm Community Edition 2022.2.2\bin\pycharm64.exe"')
+    subprocess.Popen(r'explorer "E:\JasperWork\PyCharm\PyCharm Community Edition 2022.2.2\bin\pycharm64.exe"')
     time.sleep(1)
     # 開啟應用程式 - DoNotSleep
-    subprocess.Popen(r'explorer "C:\JasperWork\Tools\PythonTools\dist\AutoShakeMouse.exe"')
+    subprocess.Popen(r'explorer "E:\JasperWork\Github\PythonTools\dist\AutoShakeMouse.exe"')
 
 
 def auto_open_browser(*args):
