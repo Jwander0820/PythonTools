@@ -31,13 +31,13 @@ def open_start_explorer():
     :return:
     """
     # 開啟檔案總管 - 下載
-    subprocess.Popen(r'explorer "C:\Users\Jasper Chiu\Downloads"')
+    subprocess.Popen(r'explorer "C:\Users\jasper chiu\Downloads"')
     time.sleep(1)
     # 開啟檔案總管 - Revital
-    subprocess.Popen(r'explorer "C:\JasperWork\Project\Revital"')
+    subprocess.Popen(r'explorer "C:\JasperWork\MainProject"')
     time.sleep(1)
     # 開啟應用程式 - PyCharm
-    subprocess.Popen(r'explorer "C:\Program Files\JetBrains\PyCharm Community Edition 2022.2.2\bin\pycharm64.exe"')
+    subprocess.Popen(r'explorer "C:\Software\PyCharm Community Edition 2022.3\bin\pycharm64.exe"')
     time.sleep(1)
     # 開啟應用程式 - DoNotSleep
     subprocess.Popen(r'explorer "C:\JasperWork\Tools\PythonTools\dist\AutoShakeMouse.exe"')

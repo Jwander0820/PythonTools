@@ -45,7 +45,7 @@ class AutoControl:
         point = pyautogui.locateCenterOnScreen(f'{img_folder}/donotsleep_logo2.png')  # 取得APP圖示的座標
         if point:
             x, y = point  # 取得圖示座標後，向右下移動(150, 150)，因為圖標無法使用右鍵功能，所以需要移動到視窗位置執行功能
-            x = x + 150  # win 11 可以透過圖標觸發右鍵功能，但此處仍做保留
+            x = x + 750  # win 11 可以透過圖標觸發右鍵功能，但此處仍做保留
             y = y + 150
             time.sleep(0.5)
             pyautogui.click((x, y), button="right")  # 在指定座標點擊右鍵
