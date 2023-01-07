@@ -177,6 +177,22 @@ class FuncKey:
         press('`')
         keyUp('ctrl')
 
+    @staticmethod
+    def alt_wave():
+        """
+        alt + ` : 自訂快捷鍵
+        :return:
+        """
+        keyDown('alt')
+        press('`')
+        keyUp('alt')
+
+    @staticmethod
+    def alt_enter():
+        keyDown('alt')
+        press('enter')
+        keyUp('alt')
+
 
 if __name__ == "__main__":
     FuncKey.win_3()
