@@ -48,7 +48,9 @@ class AutoOpen:
         自動開啟起始應用程式(獨立)
         """
         # 開啟應用程式 - DoNotSleep
-        subprocess.Popen(r'explorer "C:\JasperWork\Tools\PythonTools\dist\AutoShakeMouse.exe"')
+        cwd = r"C:\JasperWork\Tools\PythonTools\dist"
+        subprocess.Popen(r'C:\JasperWork\Tools\PythonTools\dist\AutoShakeMouse.exe', cwd=cwd,
+                         creationflags=subprocess.CREATE_NEW_CONSOLE)
 
     @staticmethod
     def auto_open_browser(*args):
