@@ -7,6 +7,7 @@ from logging import StreamHandler
 from logging.handlers import RotatingFileHandler
 from time import sleep
 
+import pyautogui
 from pyautogui import press, position
 
 # 設定log handler
@@ -31,6 +32,7 @@ logger.addHandler(consoleHandler)
 
 def avoid_screen_sleep():
     shake = True  # 開關設定
+    pyautogui.FAILSAFE = False  # 關閉失效安全防護(pyautogui功能滑鼠移動到左上角時觸發跳出程式)
     while shake:
         try:
             mouse_pose = position()  # 取得並暫存當前滑鼠座標
