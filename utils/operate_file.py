@@ -1,6 +1,8 @@
 import os
 import shutil
 
+import pandas as pd
+
 
 class OperateFile:
     @staticmethod
@@ -66,9 +68,32 @@ class OperateFile:
                 return True
         return False
 
+    @staticmethod
+    def write_data_to_excel(data, file_name: str = "output.xlsx") -> None:
+        """
+        將資料（清單或字典）寫入到Excel文件中。
+
+        :param data: 需要寫入Excel的資料，可以是清單或字典。
+        :param file_name: Excel文件的名稱，包括副檔名（例如：output.xlsx）。
+        """
+        if isinstance(data, list):
+            df = pd.DataFrame(data, columns=['Data'])
+        elif isinstance(data, dict):
+            df = pd.DataFrame(list(data.items()), columns=['Key', 'Data'])
+        else:
+            raise ValueError("Unsupported data type. Please provide a list or dictionary.")
+
+        # 將DataFrame寫入Excel文件
+        df.to_excel(file_name, index=False)
+
 
 if __name__ == '__main__':
     _create_folder = "./upper_folder/test_folder"
     OperateFile.create_folder(_create_folder)  # 建立資料夾
     _clear_folder = "./upper_folder"
     OperateFile.clear_folder(_clear_folder)  # 清空資料夾
+
+    # 列出當前資料夾下所有檔案，並寫入xlsx檔案
+    _folder_path = "./"
+    _file_list = OperateFile.list_files_in_folder(_folder_path)
+    OperateFile.write_data_to_excel(_file_list, "output.xlsx")
