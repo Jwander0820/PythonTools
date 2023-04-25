@@ -1,0 +1,29 @@
+{
+  "ENV": "DevConfig",
+  "DevConfig": {
+    "ApiUrl": "http://127.0.0.1:8080",
+    "DataFolder": "",
+    "FtpIp": "",
+    "FtpUsr": "",
+    "FtpPwd": "",
+    "FtpPort": ""
+  },
+
+  "TestConfig": {
+    "ApiUrl": "http://192.168.0.1:8080",
+    "DataFolder": "",
+    "FtpIp": "",
+    "FtpUsr": "",
+    "FtpPwd": "",
+    "FtpPort": ""
+  },
+
+  "ProdConfig": {
+    "ApiUrl": "http://192.168.0.1:10010",
+    "DataFolder": "",
+    "FtpIp": "",
+    "FtpUsr": "",
+    "FtpPwd": "",
+    "FtpPort": ""
+  }
+}
