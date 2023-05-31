@@ -37,10 +37,12 @@ def main():
     print("-------------（￣︶￣）↗　-------------")
 
     time.sleep(10)
-    FuncKey.win_3()
-    time.sleep(1)
+    FuncKey.win_num(3)
+    time.sleep(5)
+    FuncKey.win_num(6)
+    time.sleep(5)
     FuncKey.alt_wave()
-    print("快捷鍵開啟LINE")
+    print("快捷鍵開啟APP")
     print("-------------(｡･∀･)ﾉﾞ-------------")
 
     time.sleep(1)

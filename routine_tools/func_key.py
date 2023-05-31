@@ -148,13 +148,13 @@ class FuncKey:
         keyUp('win')
 
     @staticmethod
-    def win_3():
+    def win_num(num):
         """
-        win + 3 : 開啟指定應用程式
+        win + num : 開啟指定應用程式
         :return:
         """
         keyDown('win')
-        press('3')
+        press(str(num))
         keyUp('win')
 
     @staticmethod
@@ -195,4 +195,4 @@ class FuncKey:
 
 
 if __name__ == "__main__":
-    FuncKey.win_3()
+    FuncKey.win_num(3)
