@@ -39,6 +39,32 @@ class OperateFile:
             return False
 
     @staticmethod
+    def copy_file(src_path: str, dst_path: str):
+        """
+        從來源路徑複製檔案或目錄到目標路徑。
+        :param src_path: 來源路徑，可以是檔案或目錄
+        :param dst_path: 目標路徑
+        :return: 無
+        """
+        if os.path.isfile(src_path):
+            # 如果來源路徑是檔案，則複製檔案
+            os.makedirs(os.path.dirname(dst_path), exist_ok=True)
+            shutil.copy2(src_path, dst_path)  # copy2 會保留原文件的 metadata
+        elif os.path.isdir(src_path):
+            # 如果來源路徑是目錄，則複製整個目錄
+            shutil.copytree(src_path, dst_path)
+
+    @staticmethod
+    def move_file(src_path: str, dst_path: str):
+        """
+        從來源路徑移動檔案或目錄到目標路徑。
+        :param src_path: 來源路徑，可以是檔案或目錄
+        :param dst_path: 目標路徑
+        :return: 無
+        """
+        shutil.move(src_path, dst_path)
+
+    @staticmethod
     def list_files_in_folder(folder_path: str) -> list[str]:
         """
         掃描指定資料夾內的檔案名稱
