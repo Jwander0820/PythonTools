@@ -27,7 +27,7 @@ class AutoControl:
         time.sleep(1)
 
         FuncKey.win_tab()
-        time.sleep(0.5)
+        time.sleep(1.5)
 
         keyboard_list = ["right", "right_click", "down", "down", "right", "enter"]  # 將視窗移動到另一桌面
         AutoControl.continuous_keyboard_control(*keyboard_list)

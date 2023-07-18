@@ -18,3 +18,5 @@ def call_auto_control():
 
 if __name__ == '__main__':
     call_auto_control()
+    # 將subprocess壓成exe去呼叫指定程式，之後修改指定程式時不用重新壓exe
+    # pyinstaller -F .\routine_tools\subprocess_call_auto_control.py
