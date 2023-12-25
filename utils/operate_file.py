@@ -112,6 +112,49 @@ class OperateFile:
         # 將DataFrame寫入Excel文件
         df.to_excel(file_name, index=False)
 
+    @staticmethod
+    def list_files_and_folders(directory):
+        """
+        遍歷並列印指定資料夾下所有檔案和資料夾
+
+        這個方法將會遍歷指定的資料夾，並遞迴地訪問所有子資料夾和檔案
+        對於每個訪問的資料夾，它會列出資料夾的路徑，然後分別列出其下所有子資料夾和檔案的路徑
+
+        :param directory:要遍歷的資料夾的路徑
+        :return:
+        """
+        # 遍歷指定資料夾
+        for root, dirs, files in os.walk(directory):
+            # 顯示目前資料夾的路徑
+            print(f"當前資料夾: {root}")
+            # 顯示子資料夾
+            for dir in dirs:
+                print(f"子資料夾: {os.path.join(root, dir)}")
+            # 顯示檔案
+            for file in files:
+                print(f"檔案: {os.path.join(root, file)}")
+
+    @staticmethod
+    def remove_ipynb_checkpoints(directory):
+        """
+        遍歷指定資料夾及其所有子資料夾，並刪除找到的任何 `.ipynb_checkpoints` 資料夾
+
+        `.ipynb_checkpoints` 資料夾通常由Jupyter Notebook自動創建，用於保存未提交的更改。
+        這些資料夾有時可能會導致版本控制或模型訓練時的問題，特別是在進行路徑導入和文件處理時。
+        這個方法可以幫助維護乾淨的工作目錄，避免這些問題。
+
+        :param directory:要清理的資料夾的路徑
+        :return:
+        """
+        # 清除資料夾下的 .ipynb_checkpoints 避免模型訓練時匯入導致錯誤
+        for root, dirs, files in os.walk(directory, topdown=False):
+            # 檢查是否有 .ipynb_checkpoints 資料夾
+            if '.ipynb_checkpoints' in dirs:
+                checkpoint_path = os.path.join(root, '.ipynb_checkpoints')
+                # 刪除 .ipynb_checkpoints 資料夾
+                shutil.rmtree(checkpoint_path)
+                print(f"已刪除: {checkpoint_path}")
+
 
 if __name__ == '__main__':
     _create_folder = "./upper_folder/test_folder"
